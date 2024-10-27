@@ -44,6 +44,9 @@ def functionalities(command):
         time.sleep(5)
         driver.quit()
 
+    else:
+        print("I currently can't understand, Wait for my Developer Uday to Integrate Generative LLms into me!!")
+
 r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Listening...")
