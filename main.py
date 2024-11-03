@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
+import requests
+from bs4 import BeautifulSoup
 #------
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -50,13 +52,14 @@ def functionalities(command):
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
         first_div = soup.find('div', class_="NZKOFkdkcvYgD3lqOIJw")
+        assistant_text = first_div.get_text()
 
         engine = pyttsx3.init(driverName='nsss')
         volume = engine.getProperty('volume')   
         engine.setProperty('volume',1.0)
-        engine.setProperty('rate', 150)
+        engine.setProperty('rate', 200)
         print("Speaking now")
-        engine.say(first_div)
+        engine.say(assistant_text)
         engine.runAndWait()
 
 
