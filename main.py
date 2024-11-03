@@ -53,6 +53,7 @@ def functionalities(command):
         soup = BeautifulSoup(r.text, 'html.parser')
         first_div = soup.find('div', class_="NZKOFkdkcvYgD3lqOIJw")
         assistant_text = first_div.get_text()
+        print(assistant_text)
 
         engine = pyttsx3.init(driverName='nsss')
         volume = engine.getProperty('volume')   
