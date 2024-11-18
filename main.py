@@ -13,6 +13,7 @@ import time
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 my_api_key = os.getenv("GEMINI_API")
 
@@ -72,19 +73,22 @@ def functionalities(command):
         engine.runAndWait()
 
     else:
+    
+        command = command
 
-        genai.configure(api_key= my_api_key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(command)
-        print(response.text)
-        
+        if "stop" not in command.lower() or "exit" not in command.lower():
 
+            print("Generating...")
 
+            genai.configure(api_key= my_api_key)
+            model = genai.GenerativeModel("gemini-1.5-flash")
+            response = model.generate_content(command)
+            print(response.text)
 
+        else:
+            print("Your AI Agent stopped...")
 
-
-
-        
+    
 r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Listening...")
