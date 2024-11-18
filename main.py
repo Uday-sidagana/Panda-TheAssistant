@@ -77,6 +77,7 @@ def functionalities(command):
         engine.runAndWait()
 
     else:
+        
     
         ai_command = command
 
