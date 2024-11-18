@@ -9,6 +9,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+#------
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+
+my_api_key = os.getenv("GEMINI_API")
+
+
 def audio_recognize_in_func():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -64,8 +72,11 @@ def functionalities(command):
         engine.runAndWait()
 
     else:
-        query= audio_recognize_in_func()
-        print(query)
+
+        genai.configure(api_key= my_api_key)
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        response = model.generate_content(command)
+        print(response.text)
         
 
 
