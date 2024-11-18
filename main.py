@@ -77,24 +77,20 @@ def functionalities(command):
         engine.runAndWait()
 
     else:
-        
-    
-        ai_command = command
-
-        if "stop" not in ai_command.lower() and "exit" not in ai_command.lower():
-
+        while True:
             print("Generating...")
 
-            response = model.generate_content(ai_command)
+            response = model.generate_content(command)
             print(response.text)
 
-            time.sleep(10)
+            # time.sleep(10)
 
-            ai_command = audio_recognize_in_func()
-            print(ai_command)
+            command = audio_recognize_in_func()
+            print(command)
 
-        else:
-            print("Your AI Agent stopped...")
+            if "stop" in command.lower() or "exit" in command.lower():
+                print("Your AI Agent stopped...")
+                break
 
     
 r = sr.Recognizer()
