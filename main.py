@@ -46,7 +46,7 @@ def functionalities(command):
         time.sleep(5)
         driver.quit()
 
-    else:
+    elif "Word" in command.lower():
         url= f"https://www.dictionary.com/browse/{command}"
 
         r = requests.get(url)
@@ -62,6 +62,7 @@ def functionalities(command):
         print("Speaking now")
         engine.say(assistant_text)
         engine.runAndWait()
+
 
 
         
