@@ -18,6 +18,10 @@ load_dotenv()
 my_api_key = os.getenv("GEMINI_API")
 
 
+genai.configure(api_key= my_api_key)
+model = genai.GenerativeModel("gemini-1.5-flash")
+
+
 def audio_recognize_in_func():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -76,16 +80,17 @@ def functionalities(command):
     
         ai_command = command
 
-        if "stop" not in command.lower() or "exit" not in command.lower():
+        if "stop" not in ai_command.lower() and "exit" not in ai_command.lower():
 
             print("Generating...")
 
-            genai.configure(api_key= my_api_key)
-            model = genai.GenerativeModel("gemini-1.5-flash")
             response = model.generate_content(ai_command)
             print(response.text)
 
+            time.sleep(10)
+
             ai_command = audio_recognize_in_func()
+            print(ai_command)
 
         else:
             print("Your AI Agent stopped...")
