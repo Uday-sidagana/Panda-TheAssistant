@@ -74,7 +74,7 @@ def functionalities(command):
 
     else:
     
-        command = command
+        ai_command = command
 
         if "stop" not in command.lower() or "exit" not in command.lower():
 
@@ -82,8 +82,10 @@ def functionalities(command):
 
             genai.configure(api_key= my_api_key)
             model = genai.GenerativeModel("gemini-1.5-flash")
-            response = model.generate_content(command)
+            response = model.generate_content(ai_command)
             print(response.text)
+
+            ai_command = audio_recognize_in_func()
 
         else:
             print("Your AI Agent stopped...")
