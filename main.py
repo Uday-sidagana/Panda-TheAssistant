@@ -63,6 +63,12 @@ def functionalities(command):
         engine.say(assistant_text)
         engine.runAndWait()
 
+    else:
+        query= audio_recognize_in_func()
+
+        
+
+
 
 
         
