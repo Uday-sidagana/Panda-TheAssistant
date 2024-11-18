@@ -66,6 +66,7 @@ def functionalities(command):
     else:
         query= audio_recognize_in_func()
         print(query)
+        
 
 
 
