@@ -119,7 +119,7 @@ if "panda" in assistant_audio.lower():
         
         functionalities(command)
 
-        print("Can i help you with anything? Say Stop or Exit to close the chat OR Say Panda to start again")
+        print("Can i help you with anything? Say Stop or Exit to close the chat")
 
         if "stop" in assistant_audio.lower() or "exit" in assistant_audio.lower():
             print("Bye Bye Uday... Hehe...")
