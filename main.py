@@ -95,6 +95,7 @@ def functionalities(command):
     
 
 assistant_audio= audio_recognize_in_func()
+print(assistant_audio)
 
 
 if "panda" in assistant_audio.lower():
