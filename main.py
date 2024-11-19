@@ -93,15 +93,11 @@ def functionalities(command):
                 break
 
     
-r = sr.Recognizer()
-with sr.Microphone() as source:
-    print("Listening...")
-    audio = r.listen(source)
 
-assistant_call = r.recognize_google(audio)
-print(assistant_call)
+assistant_audio= audio_recognize_in_func()
 
-if "panda" in assistant_call.lower():
+
+if "panda" in assistant_audio.lower():
     # engine = pyttsx3.init(driverName='nsss')
     # volume = engine.getProperty('volume')   
     
