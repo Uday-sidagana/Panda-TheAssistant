@@ -117,6 +117,8 @@ while True:
         command = r.recognize_google(audio)
         
         functionalities(command)
+
+        print("Can i help you with anything? Say Stop or Exit to close the chat OR Say Panda to start again")
     
     elif "stop" in assistant_audio.lower() or "exit" in assistant_audio.lower():
         print("Bye Bye Uday... Hehe...")
