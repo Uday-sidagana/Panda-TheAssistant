@@ -93,30 +93,34 @@ def functionalities(command):
                 break
 
     
+while True:
+    assistant_audio= audio_recognize_in_func()
+    print(assistant_audio)
 
-assistant_audio= audio_recognize_in_func()
-print(assistant_audio)
 
+    if "panda" in assistant_audio.lower():
+        # engine = pyttsx3.init(driverName='nsss')
+        # volume = engine.getProperty('volume')   
+        
+        # engine.setProperty('volume',1.0)
+        # engine.setProperty('rate', 150)
+        # print("Speaking now")
+        # engine.say("Hey Uday!")
+        # engine.runAndWait()
+        print("Hey UDAY!!")
 
-if "panda" in assistant_audio.lower():
-    # engine = pyttsx3.init(driverName='nsss')
-    # volume = engine.getProperty('volume')   
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Listening...")
+            audio = r.listen(source)
+
+        command = r.recognize_google(audio)
+        
+        functionalities(command)
     
-    # engine.setProperty('volume',1.0)
-    # engine.setProperty('rate', 150)
-    # print("Speaking now")
-    # engine.say("Hey Uday!")
-    # engine.runAndWait()
-    print("Hey UDAY!!")
-
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening...")
-        audio = r.listen(source)
-
-    command = r.recognize_google(audio)
-    
-    functionalities(command)
+    elif "stop" in assistant_audio.lower() or "exit" in assistant_audio.lower():
+        print("Bye Bye Uday... Hehe...")
+        break
 
 
     
