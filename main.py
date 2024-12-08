@@ -99,15 +99,15 @@ print(assistant_audio)
 
 
 if "panda" in assistant_audio.lower():
-    engine = pyttsx3.init(driverName='nsss')
-    volume = engine.getProperty('volume')   
+    # engine = pyttsx3.init(driverName='nsss')
+    # volume = engine.getProperty('volume')   
     
-    engine.setProperty('volume',1.0)
-    engine.setProperty('rate', 150)
-    print("Speaking now")
-    engine.say("Hey Uday!")
-    engine.runAndWait()
-    print("Hey UDAY!!")
+    # engine.setProperty('volume',1.0)
+    # engine.setProperty('rate', 150)
+    # print("Speaking now")
+    # engine.say("Hey Uday!")
+    # engine.runAndWait()
+    # print("Hey UDAY!!")
     while True:
 
         r = sr.Recognizer()
