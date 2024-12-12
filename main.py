@@ -60,7 +60,8 @@ def functionalities(command):
         driver.quit()
 
     elif "word" in command.lower():
-        url= f"https://www.dictionary.com/browse/{command}"
+        dict_word = audio_recognize_in_func()
+        url= f"https://www.dictionary.com/browse/{dict_word}"
 
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
