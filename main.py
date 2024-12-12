@@ -59,7 +59,7 @@ def functionalities(command):
         time.sleep(5)
         driver.quit()
 
-    elif "Word" in command.lower():
+    elif "word" in command.lower():
         url= f"https://www.dictionary.com/browse/{command}"
 
         r = requests.get(url)
@@ -107,15 +107,9 @@ if "panda" in assistant_audio.lower():
     # print("Speaking now")
     # engine.say("Hey Uday!")
     # engine.runAndWait()
-    # print("Hey UDAY!!")
     while True:
 
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            print("Listening...")
-            audio = r.listen(source)
-
-        command = r.recognize_google(audio)
+        command = audio_recognize_in_func()
         
         functionalities(command)
 
@@ -124,6 +118,5 @@ if "panda" in assistant_audio.lower():
         if "stop" in assistant_audio.lower() or "exit" in assistant_audio.lower():
             print("Bye Bye Uday... Hehe...")
             break
-
 
 
