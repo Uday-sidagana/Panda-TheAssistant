@@ -59,12 +59,14 @@ def functionalities(command):
         time.sleep(5)
         driver.quit()
 
-    elif "word" in command.lower():
+    elif "dictionary" in command.lower():
         dict_word = audio_recognize_in_func()
+        print(dict_word)
         url= f"https://www.dictionary.com/browse/{dict_word}"
 
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
+        
         first_div = soup.find('div', class_="NZKOFkdkcvYgD3lqOIJw")
         assistant_text = first_div.get_text()
         print(assistant_text)
@@ -109,15 +111,17 @@ if "panda" in assistant_audio.lower():
     # engine.say("Hey Uday!")
     # engine.runAndWait()
     while True:
+        print("Can i help you with anything? Say Stop or Exit to close the chat")
 
         command = audio_recognize_in_func()
+        if "stop" in command or "exit" in command:
+            print("Bye Bye Uday... Hehe...")
+            break
         
         functionalities(command)
 
-        print("Can i help you with anything? Say Stop or Exit to close the chat")
+        
 
-        if "stop" in assistant_audio.lower() or "exit" in assistant_audio.lower():
-            print("Bye Bye Uday... Hehe...")
-            break
+       
 
 
