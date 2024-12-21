@@ -71,13 +71,13 @@ def functionalities(command):
         assistant_text = first_div.get_text()
         print(assistant_text)
 
-        # engine = pyttsx3.init(driverName='nsss')
-        # volume = engine.getProperty('volume')   
-        # engine.setProperty('volume',1.0)
-        # engine.setProperty('rate', 200)
-        # print("Speaking now")
-        # engine.say(assistant_text)
-        # engine.runAndWait()
+        engine = pyttsx3.init(driverName='nsss')
+        volume = engine.getProperty('volume')   
+        engine.setProperty('volume',1.0)
+        engine.setProperty('rate', 200)
+        print("Speaking now")
+        engine.say(assistant_text)
+        engine.runAndWait()
 
     else:
         while True:
