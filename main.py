@@ -18,8 +18,23 @@ load_dotenv()
 my_api_key = os.getenv("GEMINI_API")
 
 
-genai.configure(api_key= my_api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+
+
+def call_gemini_api(prompt):
+    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={my_api_key}"
+    headers = {"Content-Type": "application/json"}
+    payload = {"contents": [{"parts": [{"text": prompt}]}]}
+
+    response = requests.post(url, headers=headers, json=payload)
+
+    if response.status_code == 200:
+        result = response.json()
+        try:
+            return result['candidates'][0]['content']['parts'][0]['text']
+        except (KeyError, IndexError):
+            return "Error: Unable to extract AI response."
+    else:
+        return f"Error: {response.status_code}, {response.text}"
 
 
 def audio_recognize_in_func():
@@ -83,7 +98,7 @@ def functionalities(command):
         while True:
             print("Generating...")
 
-            response = model.generate_content(command)
+            response = call_gemini_api(command)
             print(response.text)
 
             # time.sleep(10)
